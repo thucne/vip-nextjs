@@ -14,7 +14,7 @@ const Dashboard = (props) => {
       </div>
 
       <div className="flex flex-col w-full  md:basis-1/2 h-full">
-          
+          Right Side
       </div>
     </div>
   );
