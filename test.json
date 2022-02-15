@@ -1,0 +1,30 @@
+{
+    "vip": "fiddle",
+    "type1": "vocab",
+    "type2": [
+        2,
+        3
+    ],
+    "meanings": {
+        "english": [
+            "to act dishonestly in order to get something for yourself, or to change something dishonestly, especially to your advantage",
+            "to move things about or touch things with no particular purpose",
+            "a violin",
+            "something difficult to do, especially because the things involved are small or need careful use of the fingers"
+        ],
+        "vietnamese": [
+            "nghịch ngợm"
+        ]
+    },
+    "pronounce": "/ˈfɪd.əl/",
+    "synonyms": null,
+    "antonyms": null,
+    "examples": [
+        "She managed to fiddle a free trip to America",
+        "Put your papers down and stop fiddling with them!",
+        "to play the fiddle",
+        "I find threading a needle a terrible fiddle"
+    ],
+    "public": true,
+    "tags": "naughty, stealing"
+}
