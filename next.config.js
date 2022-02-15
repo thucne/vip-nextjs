@@ -5,7 +5,8 @@ module.exports = {
       "res.cloudinary.com",
       "images.unsplash.com",
       "localhost",
-      "vip-headless-cms.herokuapp.com",
+      "api.vip.myblog.engineer",
+      "img.upxi.me"
     ],
   }
 }

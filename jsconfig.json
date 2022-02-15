@@ -9,6 +9,8 @@
         "@hooks/*" :["hooks/*"],
         "@styles/*": ["styles/*"],
         "@styles":["styles"],
+        "@layouts/*": ["layouts/*"],
+        "@layouts": ["layouts"],
       }
     }
   }
