@@ -6,6 +6,8 @@
         "@utils": ["utils"],
         "@config": ["config"],
         "@components/*": ["components/*"],
+        "@layouts/*": ["layouts/*"],
+        "@layouts": ["layouts"],
       }
     }
   }
