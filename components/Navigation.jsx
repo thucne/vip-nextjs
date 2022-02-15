@@ -1,7 +1,8 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
+import React, { Fragment, useRef } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import FormModal from './Form'
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
@@ -15,8 +16,10 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+  const formModalRef = useRef(null)
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+   <React.Fragment>
+      <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -60,6 +63,15 @@ export default function Example() {
                         {item.name}
                       </a>
                     ))}
+                     <a
+                        className={classNames(
+                          'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          'px-3 py-2 rounded-md text-sm font-medium cursor-pointer'
+                        )}
+                        onClick={() => formModalRef.current()}
+                      >
+                        Create word
+                      </a>
                   </div>
                 </div>
               </div>
@@ -152,5 +164,7 @@ export default function Example() {
         </>
       )}
     </Disclosure>
+    <FormModal formModalRef={formModalRef}/>
+   </React.Fragment>
   )
 }

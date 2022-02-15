@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 html,
 body {
   padding: 0;
@@ -17,4 +18,9 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.slick-slide{
+  margin-left:  15px;
+  margin-right:  15px;
 }
