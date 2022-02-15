@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Backdrop from "./Backdrop";
 import { AiOutlineClose } from "react-icons/ai";
-import useClickOutside from "../../hooks/useClickOutside";
+import useClickOutside from "@hooks/useClickOutside";
 const Modal = ({ children, childRef, }) => {
   const [open, setOpen] = useState(false);
   const modalRef = useRef(null);

@@ -10,7 +10,7 @@ import React from 'react'
     <div>
          <input 
          ref={inputRef}
-         className='w-[300px] border-[1px] border-gray-600 p-2 rounded-full outline-none mb-5' placeholder={name}/>
+         className='w-[300px] border-[1px] border-gray-600 p-2 rounded-full outline-none mb-5 pl-5 bg-transparent' placeholder={name}/>
     </div>
    )
   }

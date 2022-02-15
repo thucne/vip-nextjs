@@ -6,6 +6,9 @@
         "@utils": ["utils"],
         "@config": ["config"],
         "@components/*": ["components/*"],
+        "@hooks/*" :["hooks/*"],
+        "@styles/*": ["styles/*"],
+        "@styles":["styles"],
       }
     }
   }

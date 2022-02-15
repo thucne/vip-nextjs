@@ -14,14 +14,14 @@ const FormModal = ({ formModalRef }) => {
   const exambleInputRef = useRef(null);
   const pronounceInputRef = useRef(null);
   const synonymInputRef = useRef(null);
- const imageInputRef = useRef(null)
-const [imageData,setImageData] =useState("")
+  const [imageData,setImageData] =useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Get value of input : inputRef.current.value
-    console.log({imageData});
   };
+
+  
   return (
     <Modal childRef={formModalRef}>
       <div className="mb-[100px]">
