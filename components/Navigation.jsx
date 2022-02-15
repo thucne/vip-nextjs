@@ -8,9 +8,6 @@ import Image from 'next/image';
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
 ]
 
 function classNames(...classes) {
@@ -21,7 +18,7 @@ export default function Example() {
   const formModalRef = useRef(null)
   return (
     <React.Fragment>
-      <Disclosure as="nav" className="bg-gray-800">
+      <Disclosure as="nav" className="fixed bg-black top-0 left-0 w-full">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">

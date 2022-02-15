@@ -6,6 +6,7 @@ module.exports = {
       "images.unsplash.com",
       "localhost",
       "api.vip.myblog.engineer",
+      "img.upxi.me"
     ],
   }
 }
