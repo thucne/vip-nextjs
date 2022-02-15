@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
 
 import useSWR from 'swr';
 import axios from 'axios';
@@ -7,123 +6,78 @@ import { API } from '@config';
 
 import Image from 'next/image';
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 /**
  * @author
  * @function NewWords
  **/
 
-const dummnyData = [
-  {
-    Vip: "outlet",
-    Pronouce: "/ˈaʊt.let/",
-  },
-  {
-    Vip: "outlet",
-    Pronouce: "/ˈaʊt.let/",
-  },
-  {
-    Vip: "outlet",
-    Pronouce: "/ˈaʊt.let/",
-  },
-  {
-    Vip: "outlet",
-    Pronouce: "/ˈaʊt.let/",
-  },
-];
-
 const fetcher = (...args) => axios(...args).then((res) => res.data);
 
-const NewWords = (props) => {
+const NewWords = ({ hover, setHover }) => {
+
   const { data, error } = useSWR(`${API}/api/vips?populate=*`, fetcher);
 
   const vips = data?.data?.length ? data.data : [];
 
-
   return (
-    <div className="w-full p-2 pb-10">
-      <Slider {...settings(vips?.length)}>
+    <div className="w-full p-2">
+      <div className="flex items-stretch gap-2 overflow-auto">
         {vips?.length > 0 && vips.map((vip, index) => {
 
           const vipName = vip.attributes.vip || '';
-          const pronounce = vip.attributes.pronouce;
+          const pronounce = vip.attributes.pronounce;
           const thumbnail = vip.attributes.illustration.data.attributes.formats.thumbnail.url;
-          const englishFistMeaning = vip.attributes.meanings.english[0];
           const splittedVipName = vipName.split(" ");
           let firstExample = vip.attributes.examples[0];
 
           splittedVipName.forEach((word, index) => {
-            firstExample = firstExample.replace(word, `<span class="italic underline underline-offset-1">${word}</span>`)
+            firstExample = firstExample.replace(word, `<span class="font-bold underline underline-offset-1">${word}</span>`)
           });
 
-          return (
-            <div
-              key={`render-public-vip-${index}`}
-              className="h-[250px] sm:h-[270px] md:h-[290px] lg:h-[310px] rounded"
-              style={{ width: 175 }}
-            >
-              <div className=" h-full flex flex-col justify-center items-center ">
-                <div className="relative h-[150px] w-full bg-[#E9E5D6] rounded-lg">
-                  <Image
-                    src={thumbnail || 'https://img.upxi.me/wL7S9u'}
-                    layout="fill"
-                    alt={vip.attributes.vip}
-                    objectFit="contain"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-center text-[27px] font-bold text-gray-800">{vipName}</h3>
-                </div>
-                <div>
-                  <h3 className="text-center text-[15px] font-semibold text-gray-800">{pronounce}</h3>
-                </div>
-                <div>
-                  <p className="text-center text-[13px] text-gray-800 mt-2 max-h-full overflow-auto">{englishFistMeaning}</p>
-                </div>
-                <div>
-                  <p className="text-center text-[13px] font-bold text-gray-800 mt-2 max-h-full overflow-auto prose"
-                    dangerouslySetInnerHTML={{ __html: `${firstExample}` }}
-                  >
-                  </p>
-                </div>
-              </div>
-            </div>
-          )
+          return <EachWord
+            key={`render-public-vip-${index}`}
+            thumbnail={thumbnail}
+            vipName={vipName}
+            pronounce={pronounce}
+            firstExample={firstExample}
+            hover={hover}
+            setHover={setHover}
+          />
         })}
-      </Slider>
+      </div>
     </div>
   );
 };
 
-const settings = (count) => ({
-  className: "slider variable-width rounded overflow-hidden",
-  dots: true,
-  infinite: count > 3,
-  speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 3,
-  initialSlide: 0,
-  variableWidth: true,
-  responsive: [
-    {
-      breakpoint: 1100,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        infinite: count > 2,
-      },
-    },
-    {
-      breakpoint: 900,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: count > 1,
-      },
-    },
-  ],
-});
+const EachWord = ({ thumbnail, vipName, pronounce, firstExample, hover, setHover }) => {
+
+  return <div
+    className="rounded-[8px] cursor-pointer border border-transparent hover:border-gray-200 hover:brightness-75	 p-2 noselect"
+    style={{ width: 'calc(150px + 1rem)', maxWidth: 'calc(150px + 1rem)' }}
+    onMouseEnter={() => setHover(vipName)}
+    onMouseLeave={() => setHover('')}
+  >
+    <div className="relative h-[150px] w-full bg-[#E9E5D6] rounded-[5px]">
+      <Image
+        src={thumbnail || 'https://img.upxi.me/wL7S9u'}
+        layout="fill"
+        alt={vipName}
+        objectFit="contain"
+      />
+    </div>
+    <div>
+      <h3 className="text-center text-[27px] font-bold text-gray-800 w-[150px] break-words">{vipName}</h3>
+    </div>
+    <div>
+      <h3 className="text-center text-[15px] font-semibold text-gray-800 w-[150px] break-words">{pronounce}</h3>
+    </div>
+    <div>
+      <p className="text-center text-[13px] text-gray-800 mt-2 max-h-full overflow-auto prose w-[150px] break-words"
+        dangerouslySetInnerHTML={{ __html: `${firstExample}` }}
+      >
+      </p>
+    </div>
+  </div>
+}
 
 export default NewWords;

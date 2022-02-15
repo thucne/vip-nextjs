@@ -20,8 +20,7 @@ export default function Example() {
   const formModalRef = useRef(null);
   return (
     <React.Fragment>
-
-      <Disclosure as="nav" className="fixed bg-black top-0 left-0 w-full">
+      <Disclosure as="nav" className="fixed bg-black top-0 left-0 w-full z-50">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
