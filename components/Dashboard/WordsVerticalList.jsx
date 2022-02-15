@@ -1,4 +1,5 @@
 import React from 'react'
+import NewWords from './NewWords';
 
 /**
 * @author
@@ -7,10 +8,14 @@ import React from 'react'
 
  const WordsVerticalList = (props) => {
   return(
-    <div>
-        <h1 className='text-'>
-            Words list
-        </h1>
+    <div className='flex flex-col h-full ml-10'>
+        <div className='flex w-full basis-1/2'>
+            <NewWords/>
+        </div>
+
+        <div className='flex basis-1/2'>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis minus perferendis officiis ad laudantium voluptatibus eum, sint earum veniam numquam maiores autem? Autem, a atque. Placeat vero ullam soluta odio.
+        </div>
     </div>
    )
   }
